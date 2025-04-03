@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: pixabay-mcp
+Version: 1.0.0
+Summary: Pixabay MCP server, a simple tool to search images from Pixabay
+Author-email: liuzhuo <liuzhuogood@gmail.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: mcp[cli]>=1.6.0
+Requires-Dist: pydantic
+Requires-Dist: python-dotenv

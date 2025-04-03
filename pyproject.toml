@@ -1,0 +1,30 @@
+[project]
+name = "pixabay-mcp"
+version = "1.0.0"
+authors = [{name = "liuzhuo", email = "liuzhuogood@gmail.com"}]
+description = "Pixabay MCP server, a simple tool to search images from Pixabay"
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "pydantic",
+    "python-dotenv",
+]
+
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project.scripts]
+pixabay-mcp = "server:main"
+
+[tool.pyright]
+include = ["src"]
+venvPath = "."
+venv = ".venv"
+
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+default = true

@@ -1,0 +1,7 @@
+pyproject.toml
+src/pixabay_mcp.egg-info/PKG-INFO
+src/pixabay_mcp.egg-info/SOURCES.txt
+src/pixabay_mcp.egg-info/dependency_links.txt
+src/pixabay_mcp.egg-info/entry_points.txt
+src/pixabay_mcp.egg-info/requires.txt
+src/pixabay_mcp.egg-info/top_level.txt
