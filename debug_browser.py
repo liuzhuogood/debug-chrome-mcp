@@ -29,7 +29,7 @@ class DebugBrowser:
             # 首先获取所有页面信息
             pages_resp = requests.get(f"http://localhost:{port}/json/list", timeout=2)
             pages_info = pages_resp.json()
-            
+
             # 获取调试器WebSocket URL
             resp = requests.get(f"http://localhost:{port}/json/version", timeout=2)
             ws_url = resp.json().get("webSocketDebuggerUrl")
@@ -40,10 +40,10 @@ class DebugBrowser:
 
         playwright = await async_playwright().start()
         browser = await playwright.chromium.connect_over_cdp(ws_url)
-        
+
         # 获取已存在的context
         context = browser.contexts[0]
-        
+
         # 获取已存在的页面
         pages = context.pages
         page = pages[0] if pages else await context.new_page()
@@ -56,6 +56,7 @@ class DebugBrowser:
         开始监听浏览器的 console 输出
         会收集所有类型的日志，包括 error、warning、info 等
         """
+
         def handle_console(msg):
             log_entry = {
                 'type': msg.type,

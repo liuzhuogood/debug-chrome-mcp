@@ -19,7 +19,6 @@ async def get_console_log() -> List[Dict[str, Any]]:
     """获取当前控制台的日志"""
     global browser
     logs = browser.get_console_logs()
-    print(logs)
     return logs
 
 
