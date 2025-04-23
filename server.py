@@ -1,16 +1,33 @@
-# This is a sample Python script.
+from typing import Dict, List, Any
+import asyncio
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from mcp.server.fastmcp import FastMCP
+from DrissionPage._base.chromium import Chromium
+from debug_browser import DebugBrowser
+
+mcp = FastMCP("Debug Chrome MCP")
+browser = DebugBrowser()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+async def init():
+    global browser
+    await browser.connect_to_existing_chrome()
 
 
-# Press the green button in the gutter to run the script.
+@mcp.tool()
+async def get_console_log() -> List[Dict[str, Any]]:
+    """获取当前控制台的日志"""
+    global browser
+    logs = browser.get_console_logs()
+    print(logs)
+    return logs
+
+
+async def main():
+    await init()
+    await asyncio.sleep(8)
+    await get_console_log()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    asyncio.run(main())
